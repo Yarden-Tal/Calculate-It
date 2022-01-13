@@ -1,3 +1,3 @@
 export enum A {
-  X = "asdf",
+  X = "af",
 }
