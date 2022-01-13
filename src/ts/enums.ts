@@ -1,1 +1,3 @@
-export {};
+export enum A {
+  X = "asdf",
+}
