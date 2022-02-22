@@ -1,14 +1,7 @@
 // Components
-import Calculator from "./components/calculator/Calculator";
-import TopMenu from "./components/top-menu/TopMenu";
 
 const App = (): JSX.Element => {
-  return (
-    <div className="body-wrapper">
-      <TopMenu />
-      <Calculator />
-    </div>
-  );
+  return <div className="body-wrapper"></div>;
 };
 
 export default App;
