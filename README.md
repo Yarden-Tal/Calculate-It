@@ -1,3 +1,5 @@
+** My React TypeScript calculator **
+
 # The original design link for reference:
 
 [Dribble](https://dribbble.com/shots/14709020-Calculator).
