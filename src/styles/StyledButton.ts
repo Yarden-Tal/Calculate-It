@@ -7,48 +7,49 @@ const colorToCss = (color: IButtonProps["color"]) => {
   switch (color) {
     case ColorsEnum.RED:
       return css`
-        background-color: #c04444;
-        color: #fff;
+        background-color: inherit;
+        color: #ef7979;
         &:hover,
         &:focus {
-          background-color: #af3b3b;
+          background-color: #272b33;
         }
       `;
     case ColorsEnum.GREEN:
       return css`
-        background-color: #018645;
-        color: #fff;
+        background-color: inherit;
+        color: #26bba2;
         &:hover,
         &:focus {
-          background-color: #016d38;
+          background-color: #272b33;
         }
       `;
-    case ColorsEnum.DARK:
+    case ColorsEnum.WHITE:
       return css`
-        background-color: #272727;
-        color: #c5830d;
+        background-color: #272b33;
+        color: #fcfcfc;
         &:hover,
         &:focus {
-          background-color: #1a1a1a;
+          background-color: #272b33;
         }
       `;
   }
 
   return css`
-    background-color: #2e2e2e;
+    background-color: #272b33;
     color: #fff;
     &:hover,
     &:focus {
-      background-color: #212121;
+      background-color: #272b33;
     }
   `;
 };
 
 export const StyledButton = styled.button<IButtonProps>`
   font-family: inherit;
-  font-size: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 0;
+  border-radius: 20%;
   padding-top: 1em;
   padding-bottom: 1em;
   transition: background-color 0.15s ease-in-out, opacity 0.15s ease-in-out;
@@ -63,6 +64,9 @@ position: relative;
   transform: translate3d(0, 0, 0);
   &:focus {
     outline: 0;
+  }
+  &:hover {
+    cursor: pointer;
   }
   :after {
     content: "";

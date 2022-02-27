@@ -8,5 +8,5 @@ export enum OperatorEnum {
 export enum ColorsEnum {
   RED = "red",
   GREEN = "green",
-  DARK = "dark",
+  WHITE = "white",
 }

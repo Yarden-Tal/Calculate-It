@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const StyledIndicatorList = styled.div`
+  color: #fcfcfc;
   font-size: 0.75em;
   line-height: 1;
-  opacity: 0.4;
   text-align: right;
   display: flex;
   justify-content: space-between;
@@ -16,8 +16,10 @@ export const StyledExpression = styled.span`
 `;
 
 export const StyledScreen = styled.div`
+  color: #fcfcfc;
   font-size: 2.5em;
   min-height: 1.4em;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -25,8 +27,7 @@ export const StyledScreen = styled.div`
 `;
 
 const StyledDisplay = styled.div`
-  background-color: #393939;
-  color: #fff;
+  background-color: #22252d;
   padding: 1.5em 1em;
 `;
 

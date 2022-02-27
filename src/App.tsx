@@ -9,7 +9,6 @@ import { OperatorEnum } from "./ts/enums";
 import { DigitType } from "./ts/types";
 
 export const App = (): JSX.Element => {
-  // Calculator's states
   const [memory, setMemory] = useState<number>(0);
   const [result, setResult] = useState<number>(0);
   const [waitingForOperand, setWaitingForOperand] = useState<boolean>(true);
@@ -21,7 +20,6 @@ export const App = (): JSX.Element => {
     pendingOperator: OperatorEnum
   ): boolean => {
     let newResult = result;
-
     switch (pendingOperator) {
       case OperatorEnum.ADD:
         newResult += rightOperand;
@@ -33,93 +31,55 @@ export const App = (): JSX.Element => {
         newResult *= rightOperand;
         break;
       case OperatorEnum.DIVIDE:
-        if (rightOperand === 0) {
-          return false;
-        }
+        if (rightOperand === 0) return false;
         newResult /= rightOperand;
     }
-
     setResult(newResult);
     setDisplay(newResult.toString().toString().slice(0, 12));
-
     return true;
   };
 
-  // Pad buttons handlers
   const onDigitButtonClick = (digit: DigitType) => {
     let newDisplay = display;
-
-    if ((display === "0" && digit === 0) || display.length > 12) {
-      return;
-    }
-
+    if ((display === "0" && digit === 0) || display.length > 12) return;
     if (waitingForOperand) {
       newDisplay = "";
       setWaitingForOperand(false);
     }
-
-    if (display !== "0") {
-      newDisplay = newDisplay + digit.toString();
-    } else {
-      newDisplay = digit.toString();
-    }
-
+    if (display !== "0") newDisplay = newDisplay + digit.toString();
+    else newDisplay = digit.toString();
     setDisplay(newDisplay);
   };
 
   const onPointButtonClick = () => {
     let newDisplay = display;
-
-    if (waitingForOperand) {
-      newDisplay = "0";
-    }
-
-    if (newDisplay.indexOf(".") === -1) {
-      newDisplay = newDisplay + ".";
-    }
-
+    if (waitingForOperand) newDisplay = "0";
+    if (newDisplay.indexOf(".") === -1) newDisplay = newDisplay + ".";
     setDisplay(newDisplay);
     setWaitingForOperand(false);
   };
 
   const onOperatorButtonClick = (operator: OperatorEnum) => {
     const operand = Number(display);
-
     if (typeof pendingOperator !== "undefined" && !waitingForOperand) {
-      if (!calculate(operand, pendingOperator)) {
-        return;
-      }
-    } else {
-      setResult(operand);
-    }
-
+      if (!calculate(operand, pendingOperator)) return;
+    } else setResult(operand);
     setPendingOperator(operator);
     setWaitingForOperand(true);
   };
 
   const onChangeSignButtonClick = () => {
     const value = Number(display);
-
-    if (value > 0) {
-      setDisplay("-" + display);
-    } else if (value < 0) {
-      setDisplay(display.slice(1));
-    }
+    if (value > 0) setDisplay("-" + display);
+    else if (value < 0) setDisplay(display.slice(1));
   };
 
   const onEqualButtonClick = () => {
     const operand = Number(display);
-
     if (typeof pendingOperator !== "undefined" && !waitingForOperand) {
-      if (!calculate(operand, pendingOperator)) {
-        return;
-      }
-
+      if (!calculate(operand, pendingOperator)) return;
       setPendingOperator(undefined);
-    } else {
-      setDisplay(operand.toString());
-    }
-
+    } else setDisplay(operand.toString());
     setResult(operand);
     setWaitingForOperand(true);
   };
@@ -137,26 +97,6 @@ export const App = (): JSX.Element => {
     setWaitingForOperand(true);
   };
 
-  const onMemoryRecallButtonClick = () => {
-    setDisplay(memory.toString());
-    setWaitingForOperand(true);
-  };
-
-  const onMemoryClearButtonClick = () => {
-    setMemory(0);
-    setWaitingForOperand(true);
-  };
-
-  const onMemoryPlusButtonClick = () => {
-    setMemory(memory + Number(display));
-    setWaitingForOperand(true);
-  };
-
-  const onMemoryMinusButtonClick = () => {
-    setMemory(memory - Number(display));
-    setWaitingForOperand(true);
-  };
-
   return (
     <StyledApp>
       <Display
@@ -164,7 +104,7 @@ export const App = (): JSX.Element => {
         hasMemory={memory !== 0}
         expression={
           typeof pendingOperator !== "undefined"
-            ? `${result}${pendingOperator}${waitingForOperand ? "" : display}`
+            ? `${result} ${pendingOperator} ${waitingForOperand ? "" : display}`
             : ""
         }
       />
@@ -177,10 +117,6 @@ export const App = (): JSX.Element => {
           onEqualButtonClick,
           onAllClearButtonClick,
           onClearEntryButtonClick,
-          onMemoryRecallButtonClick,
-          onMemoryClearButtonClick,
-          onMemoryPlusButtonClick,
-          onMemoryMinusButtonClick,
         }}
       />
     </StyledApp>

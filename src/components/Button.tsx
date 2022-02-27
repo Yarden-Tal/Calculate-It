@@ -1,4 +1,3 @@
-import React from "react";
 // Styles
 import { StyledButton } from "../styles/StyledButton";
 // TS

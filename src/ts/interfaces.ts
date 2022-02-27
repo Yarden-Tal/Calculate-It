@@ -11,10 +11,6 @@ export interface IKeyboardProps {
   onEqualButtonClick: () => void;
   onAllClearButtonClick: () => void;
   onClearEntryButtonClick: () => void;
-  onMemoryRecallButtonClick: () => void;
-  onMemoryClearButtonClick: () => void;
-  onMemoryPlusButtonClick: () => void;
-  onMemoryMinusButtonClick: () => void;
 }
 
 export interface IDisplayProps {
