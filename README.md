@@ -1,10 +1,10 @@
-*My React TypeScript calculator*
+# My React TypeScript calculator
 
-# The original design link for reference:
+## The original design link for reference:
 
 [Dribble](https://dribbble.com/shots/14709020-Calculator).
 
-# Getting Started with Create React App
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
