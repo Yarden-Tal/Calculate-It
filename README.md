@@ -1,4 +1,4 @@
-** My React TypeScript calculator **
+*My React TypeScript calculator*
 
 # The original design link for reference:
 
