@@ -1,4 +1,5 @@
 # My React TypeScript calculator
+Geared at pixel-perfect Front End design with Styled Components
 
 ## The original design link for reference:
 
