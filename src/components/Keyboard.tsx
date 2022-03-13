@@ -24,8 +24,8 @@ const Keyboard = (props: IKeyboardProps): JSX.Element => {
       props.onOperatorButtonClick(OperatorEnum.DIVIDE);
     else if (keyCode === 13 || (keyCode === 187 && !shiftKey))
       props.onEqualButtonClick();
-    else if (keyCode === 46) props.onClearEntryButtonClick();
-    else if (keyCode === 27) props.onAllClearButtonClick();
+    else if (keyCode === 53) props.onPrecentButtonClick();
+    else if (keyCode === 53) props.onAllClearButtonClick();
     else if (keyCode === 78) props.onChangeSignButtonClick();
   };
 
@@ -125,7 +125,7 @@ const Keyboard = (props: IKeyboardProps): JSX.Element => {
       >
         +
       </Button>
-      <Button color={ColorsEnum.WHITE} onClick={props.onClearEntryButtonClick}>
+      <Button color={ColorsEnum.WHITE} onClick={props.onAllClearButtonClick}>
         ↻
       </Button>
       <Button

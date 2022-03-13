@@ -15,6 +15,20 @@ export const App = (): JSX.Element => {
   const [pendingOperator, setPendingOperator] = useState<OperatorEnum>();
   const [display, setDisplay] = useState<string>("0");
 
+  const formatDisplay = (display: string) => {
+    let splitDisplay = display.split("");
+    let output = "";
+    let first = true;
+    for (let i = splitDisplay.length - 1; i >= 0; i--) {
+      if ((splitDisplay.length - i - 1) % 3 === 0) {
+        if (first) first = false;
+        else output = "," + output;
+      }
+      output = splitDisplay[i] + output;
+    }
+    return output;
+  };
+
   const calculate = (
     rightOperand: number,
     pendingOperator: OperatorEnum
@@ -59,7 +73,7 @@ export const App = (): JSX.Element => {
   const onPointButtonClick = (): void => {
     let newDisplay = display;
     if (waitingForOperand) newDisplay = "0";
-    if (newDisplay.indexOf(".") === -1) newDisplay = newDisplay + ".";
+    if (newDisplay.indexOf(".") === -1) newDisplay = `${newDisplay}.`;
     setDisplay(newDisplay);
     setWaitingForOperand(false);
   };
@@ -105,7 +119,7 @@ export const App = (): JSX.Element => {
   return (
     <StyledApp>
       <Display
-        value={display}
+        value={formatDisplay(display)}
         hasMemory={memory !== 0}
         expression={
           typeof pendingOperator !== "undefined"

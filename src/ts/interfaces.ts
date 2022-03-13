@@ -10,7 +10,6 @@ export interface IKeyboardProps {
   onChangeSignButtonClick: () => void;
   onEqualButtonClick: () => void;
   onAllClearButtonClick: () => void;
-  onClearEntryButtonClick: () => void;
   onPrecentButtonClick: () => void;
 }
 
