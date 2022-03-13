@@ -52,7 +52,7 @@ export const App = (): JSX.Element => {
   };
 
   const onPrecentButtonClick = (): void => {
-    const perCent = String((result / Number(display)) * 100);
+    const perCent = String((result * Number(display)) / 100);
     setDisplay(perCent);
   };
 
