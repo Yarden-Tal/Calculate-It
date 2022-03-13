@@ -7,6 +7,7 @@ const StyledKeyboard = styled.div`
   gap: 1rem;
   background-color: #292d36;
   padding: 1.5rem;
+  border-radius: 5%;
 `;
 
 export default StyledKeyboard;

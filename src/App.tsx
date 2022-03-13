@@ -39,7 +39,7 @@ export const App = (): JSX.Element => {
     return true;
   };
 
-  const onDigitButtonClick = (digit: DigitType) => {
+  const onDigitButtonClick = (digit: DigitType): void => {
     let newDisplay = display;
     if ((display === "0" && digit === 0) || display.length > 12) return;
     if (waitingForOperand) {
@@ -51,7 +51,12 @@ export const App = (): JSX.Element => {
     setDisplay(newDisplay);
   };
 
-  const onPointButtonClick = () => {
+  const onPrecentButtonClick = (): void => {
+    const perCent = String((result / Number(display)) * 100);
+    setDisplay(perCent);
+  };
+
+  const onPointButtonClick = (): void => {
     let newDisplay = display;
     if (waitingForOperand) newDisplay = "0";
     if (newDisplay.indexOf(".") === -1) newDisplay = newDisplay + ".";
@@ -59,7 +64,7 @@ export const App = (): JSX.Element => {
     setWaitingForOperand(false);
   };
 
-  const onOperatorButtonClick = (operator: OperatorEnum) => {
+  const onOperatorButtonClick = (operator: OperatorEnum): void => {
     const operand = Number(display);
     if (typeof pendingOperator !== "undefined" && !waitingForOperand) {
       if (!calculate(operand, pendingOperator)) return;
@@ -68,13 +73,13 @@ export const App = (): JSX.Element => {
     setWaitingForOperand(true);
   };
 
-  const onChangeSignButtonClick = () => {
+  const onChangeSignButtonClick = (): void => {
     const value = Number(display);
     if (value > 0) setDisplay("-" + display);
     else if (value < 0) setDisplay(display.slice(1));
   };
 
-  const onEqualButtonClick = () => {
+  const onEqualButtonClick = (): void => {
     const operand = Number(display);
     if (typeof pendingOperator !== "undefined" && !waitingForOperand) {
       if (!calculate(operand, pendingOperator)) return;
@@ -84,7 +89,7 @@ export const App = (): JSX.Element => {
     setWaitingForOperand(true);
   };
 
-  const onAllClearButtonClick = () => {
+  const onAllClearButtonClick = (): void => {
     setMemory(0);
     setResult(0);
     setPendingOperator(undefined);
@@ -92,7 +97,7 @@ export const App = (): JSX.Element => {
     setWaitingForOperand(true);
   };
 
-  const onClearEntryButtonClick = () => {
+  const onClearEntryButtonClick = (): void => {
     setDisplay("0");
     setWaitingForOperand(true);
   };
@@ -117,6 +122,7 @@ export const App = (): JSX.Element => {
           onEqualButtonClick,
           onAllClearButtonClick,
           onClearEntryButtonClick,
+          onPrecentButtonClick,
         }}
       />
     </StyledApp>

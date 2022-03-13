@@ -28,7 +28,7 @@ export const StyledScreen = styled.div`
 
 const StyledDisplay = styled.div`
   background-color: #22252d;
-  padding: 1.5em 1em;
+  padding: 5.5em 1em 1.5em 1em;
 `;
 
 export default StyledDisplay;

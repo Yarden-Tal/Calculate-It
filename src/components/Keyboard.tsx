@@ -44,7 +44,7 @@ const Keyboard = (props: IKeyboardProps): JSX.Element => {
         <span>/</span>
         <span>₋</span>
       </Button>
-      <Button color={ColorsEnum.GREEN} onClick={props.onClearEntryButtonClick}>
+      <Button color={ColorsEnum.GREEN} onClick={props.onPrecentButtonClick}>
         %
       </Button>
       <Button

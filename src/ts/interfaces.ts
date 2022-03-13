@@ -11,6 +11,7 @@ export interface IKeyboardProps {
   onEqualButtonClick: () => void;
   onAllClearButtonClick: () => void;
   onClearEntryButtonClick: () => void;
+  onPrecentButtonClick: () => void;
 }
 
 export interface IDisplayProps {
