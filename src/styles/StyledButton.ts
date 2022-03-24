@@ -7,7 +7,7 @@ const colorToCss = (color: IButtonProps["color"]) => {
   switch (color) {
     case ColorsEnum.RED:
       return css`
-        background-color: inherit;
+        background-color: #272b33;
         color: #ef7979;
         &:hover,
         &:focus {
@@ -16,7 +16,7 @@ const colorToCss = (color: IButtonProps["color"]) => {
       `;
     case ColorsEnum.GREEN:
       return css`
-        background-color: inherit;
+        background-color: #272b33;
         color: #26bba2;
         &:hover,
         &:focus {
