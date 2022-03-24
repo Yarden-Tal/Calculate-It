@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // Styles
 import StyledApp from "./styles/StyledApp";
 // Components
@@ -9,13 +9,14 @@ import { OperatorEnum } from "./ts/enums";
 import { DigitType } from "./ts/types";
 // Helpers
 import { formatDisplay } from "./helpers/helpers";
+import Alert from "./components/Alert";
 
 export const App = (): JSX.Element => {
-  const [memory, setMemory] = useState<number>(0);
   const [result, setResult] = useState<number>(0);
-  const [waitingForOperand, setWaitingForOperand] = useState<boolean>(true);
+  const [isWaitingForOperand, setIsWaitingForOperand] = useState<boolean>(true);
   const [pendingOperator, setPendingOperator] = useState<OperatorEnum>();
   const [display, setDisplay] = useState<string>("0");
+  const [isAlertOpen, setIsAlertOpen] = useState<boolean>(false);
 
   const calculate = (
     rightOperand: number,
@@ -33,7 +34,16 @@ export const App = (): JSX.Element => {
         newResult *= rightOperand;
         break;
       case OperatorEnum.DIVIDE:
-        if (rightOperand === 0) return false;
+        if (rightOperand === 0) {
+          setIsAlertOpen(true);
+          setDisplay("0");
+          setResult(0);
+          setPendingOperator(undefined);
+          setTimeout(() => {
+            setIsAlertOpen(false);
+          }, 4000);
+          return false;
+        }
         newResult /= rightOperand;
     }
     setResult(newResult);
@@ -44,9 +54,9 @@ export const App = (): JSX.Element => {
   const onDigitButtonClick = (digit: DigitType): void => {
     let newDisplay = display;
     if ((display === "0" && digit === 0) || display.length > 12) return;
-    if (waitingForOperand) {
+    if (isWaitingForOperand) {
       newDisplay = "";
-      setWaitingForOperand(false);
+      setIsWaitingForOperand(false);
     }
     if (display !== "0") newDisplay = newDisplay + digit.toString();
     else newDisplay = digit.toString();
@@ -60,63 +70,63 @@ export const App = (): JSX.Element => {
 
   const onPointButtonClick = (): void => {
     let newDisplay = display;
-    if (waitingForOperand) newDisplay = "0";
+    if (isWaitingForOperand) newDisplay = "0";
     if (newDisplay.indexOf(".") === -1) newDisplay = `${newDisplay}.`;
     setDisplay(newDisplay);
-    setWaitingForOperand(false);
+    setIsWaitingForOperand(false);
   };
 
   const onOperatorButtonClick = (operator: OperatorEnum): void => {
     const operand = Number(display);
-    if (typeof pendingOperator !== "undefined" && !waitingForOperand) {
+    if (typeof pendingOperator !== "undefined" && !isWaitingForOperand) {
       if (!calculate(operand, pendingOperator)) return;
     } else setResult(operand);
     setPendingOperator(operator);
-    setWaitingForOperand(true);
+    setIsWaitingForOperand(true);
   };
 
   const onChangeSignButtonClick = (): void => {
     const value = Number(display);
-    if (value > 0) setDisplay("-" + display);
-    else if (value < 0) setDisplay(display.slice(1));
+    if (value > 0) {
+      setDisplay(`-${display}`);
+    } else if (value < 0) setDisplay(display.slice(1));
   };
 
   const onEqualButtonClick = (): void => {
     const operand = Number(display);
-    if (typeof pendingOperator !== "undefined" && !waitingForOperand) {
+    if (typeof pendingOperator !== "undefined" && !isWaitingForOperand) {
       if (!calculate(operand, pendingOperator)) return;
       setPendingOperator(undefined);
     } else setDisplay(operand.toString());
     setResult(operand);
-    setWaitingForOperand(true);
+    setIsWaitingForOperand(true);
   };
 
   const onAllClearButtonClick = (): void => {
-    setMemory(0);
     setResult(0);
     setPendingOperator(undefined);
     setDisplay("0");
-    setWaitingForOperand(true);
+    setIsWaitingForOperand(true);
   };
 
   const onClearEntryButtonClick = (): void => {
     setDisplay("0");
-    setWaitingForOperand(true);
+    setIsWaitingForOperand(true);
   };
 
   return (
     <StyledApp>
       <Display
         value={formatDisplay(display)}
-        hasMemory={memory !== 0}
         expression={
           typeof pendingOperator !== "undefined"
             ? `${formatDisplay(String(result))} ${pendingOperator} ${
-                waitingForOperand ? "" : formatDisplay(display)
+                isWaitingForOperand ? "" : formatDisplay(display)
               }`
             : ""
         }
       />
+      {isAlertOpen && <Alert />}
       <Keyboard
         {...{
           onDigitButtonClick,

@@ -7,9 +7,10 @@ import StyledKeyboard from "../styles/StyledKeyboard";
 import { IKeyboardProps } from "../ts/interfaces";
 import { DigitType } from "../ts/types";
 import { ColorsEnum, OperatorEnum } from "../ts/enums";
+import { StyledKBContainer } from "../styles/StyledKBContainer";
 
 const Keyboard = (props: IKeyboardProps): JSX.Element => {
-  const handleKeyDown = ({ keyCode, shiftKey }: KeyboardEvent) => {
+  const handleKeyDown = ({ keyCode, shiftKey }: KeyboardEvent): void => {
     if (keyCode >= 48 && keyCode <= 57 && !shiftKey)
       props.onDigitButtonClick((keyCode - 48) as DigitType);
     else if (keyCode >= 96 && keyCode <= 105)
@@ -35,112 +36,117 @@ const Keyboard = (props: IKeyboardProps): JSX.Element => {
   });
 
   return (
-    <StyledKeyboard>
-      <Button color={ColorsEnum.GREEN} onClick={props.onAllClearButtonClick}>
-        AC
-      </Button>
-      <Button color={ColorsEnum.GREEN} onClick={props.onChangeSignButtonClick}>
-        <span>⁺</span>
-        <span>/</span>
-        <span>₋</span>
-      </Button>
-      <Button color={ColorsEnum.GREEN} onClick={props.onPrecentButtonClick}>
-        %
-      </Button>
-      <Button
-        color={ColorsEnum.RED}
-        onClick={() => props.onOperatorButtonClick(OperatorEnum.DIVIDE)}
-      >
-        ÷
-      </Button>
-      <Button
-        color={ColorsEnum.WHITE}
-        onClick={() => props.onDigitButtonClick(7)}
-      >
-        7
-      </Button>
-      <Button
-        color={ColorsEnum.WHITE}
-        onClick={() => props.onDigitButtonClick(8)}
-      >
-        8
-      </Button>
-      <Button
-        color={ColorsEnum.WHITE}
-        onClick={() => props.onDigitButtonClick(9)}
-      >
-        9
-      </Button>
-      <Button
-        color={ColorsEnum.RED}
-        onClick={() => props.onOperatorButtonClick(OperatorEnum.MULTIPLY)}
-      >
-        x
-      </Button>
-      <Button
-        color={ColorsEnum.WHITE}
-        onClick={() => props.onDigitButtonClick(4)}
-      >
-        4
-      </Button>
-      <Button
-        color={ColorsEnum.WHITE}
-        onClick={() => props.onDigitButtonClick(5)}
-      >
-        5
-      </Button>
-      <Button
-        color={ColorsEnum.WHITE}
-        onClick={() => props.onDigitButtonClick(6)}
-      >
-        6
-      </Button>
-      <Button
-        color={ColorsEnum.RED}
-        onClick={() => props.onOperatorButtonClick(OperatorEnum.SUBTRACT)}
-      >
-        -
-      </Button>
-      <Button
-        color={ColorsEnum.WHITE}
-        onClick={() => props.onDigitButtonClick(1)}
-      >
-        1
-      </Button>
-      <Button
-        color={ColorsEnum.WHITE}
-        onClick={() => props.onDigitButtonClick(2)}
-      >
-        2
-      </Button>
-      <Button
-        color={ColorsEnum.WHITE}
-        onClick={() => props.onDigitButtonClick(3)}
-      >
-        3
-      </Button>
-      <Button
-        color={ColorsEnum.RED}
-        onClick={() => props.onOperatorButtonClick(OperatorEnum.ADD)}
-      >
-        +
-      </Button>
-      <Button color={ColorsEnum.WHITE} onClick={props.onAllClearButtonClick}>
-        ↻
-      </Button>
-      <Button
-        color={ColorsEnum.WHITE}
-        onClick={() => props.onDigitButtonClick(0)}
-      >
-        0
-      </Button>
-      <Button color={ColorsEnum.WHITE} onClick={props.onPointButtonClick}>
-        .
-      </Button>
-      <Button color={ColorsEnum.RED} onClick={props.onEqualButtonClick}>
-        =
-      </Button>
-    </StyledKeyboard>
+    <StyledKBContainer>
+      <StyledKeyboard>
+        <Button color={ColorsEnum.GREEN} onClick={props.onAllClearButtonClick}>
+          AC
+        </Button>
+        <Button
+          color={ColorsEnum.GREEN}
+          onClick={props.onChangeSignButtonClick}
+        >
+          <span>⁺</span>
+          <span>/</span>
+          <span>₋</span>
+        </Button>
+        <Button color={ColorsEnum.GREEN} onClick={props.onPrecentButtonClick}>
+          %
+        </Button>
+        <Button
+          color={ColorsEnum.RED}
+          onClick={() => props.onOperatorButtonClick(OperatorEnum.DIVIDE)}
+        >
+          ÷
+        </Button>
+        <Button
+          color={ColorsEnum.WHITE}
+          onClick={() => props.onDigitButtonClick(7)}
+        >
+          7
+        </Button>
+        <Button
+          color={ColorsEnum.WHITE}
+          onClick={() => props.onDigitButtonClick(8)}
+        >
+          8
+        </Button>
+        <Button
+          color={ColorsEnum.WHITE}
+          onClick={() => props.onDigitButtonClick(9)}
+        >
+          9
+        </Button>
+        <Button
+          color={ColorsEnum.RED}
+          onClick={() => props.onOperatorButtonClick(OperatorEnum.MULTIPLY)}
+        >
+          x
+        </Button>
+        <Button
+          color={ColorsEnum.WHITE}
+          onClick={() => props.onDigitButtonClick(4)}
+        >
+          4
+        </Button>
+        <Button
+          color={ColorsEnum.WHITE}
+          onClick={() => props.onDigitButtonClick(5)}
+        >
+          5
+        </Button>
+        <Button
+          color={ColorsEnum.WHITE}
+          onClick={() => props.onDigitButtonClick(6)}
+        >
+          6
+        </Button>
+        <Button
+          color={ColorsEnum.RED}
+          onClick={() => props.onOperatorButtonClick(OperatorEnum.SUBTRACT)}
+        >
+          -
+        </Button>
+        <Button
+          color={ColorsEnum.WHITE}
+          onClick={() => props.onDigitButtonClick(1)}
+        >
+          1
+        </Button>
+        <Button
+          color={ColorsEnum.WHITE}
+          onClick={() => props.onDigitButtonClick(2)}
+        >
+          2
+        </Button>
+        <Button
+          color={ColorsEnum.WHITE}
+          onClick={() => props.onDigitButtonClick(3)}
+        >
+          3
+        </Button>
+        <Button
+          color={ColorsEnum.RED}
+          onClick={() => props.onOperatorButtonClick(OperatorEnum.ADD)}
+        >
+          +
+        </Button>
+        <Button color={ColorsEnum.WHITE} onClick={props.onAllClearButtonClick}>
+          ↻
+        </Button>
+        <Button
+          color={ColorsEnum.WHITE}
+          onClick={() => props.onDigitButtonClick(0)}
+        >
+          0
+        </Button>
+        <Button color={ColorsEnum.WHITE} onClick={props.onPointButtonClick}>
+          .
+        </Button>
+        <Button color={ColorsEnum.RED} onClick={props.onEqualButtonClick}>
+          =
+        </Button>
+      </StyledKeyboard>
+    </StyledKBContainer>
   );
 };
 

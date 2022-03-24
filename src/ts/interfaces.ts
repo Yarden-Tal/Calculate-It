@@ -14,7 +14,6 @@ export interface IKeyboardProps {
 }
 
 export interface IDisplayProps {
-  hasMemory: boolean;
   expression: string;
   value: string;
 }
