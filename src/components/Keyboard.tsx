@@ -26,8 +26,9 @@ const Keyboard = (props: IKeyboardProps): JSX.Element => {
     else if (keyCode === 13 || (keyCode === 187 && !shiftKey))
       props.onEqualButtonClick();
     else if (keyCode === 53) props.onPrecentButtonClick();
-    else if (keyCode === 53) props.onAllClearButtonClick();
+    else if (keyCode === 8 || keyCode === 27) props.onAllClearButtonClick();
     else if (keyCode === 78) props.onChangeSignButtonClick();
+    else if (keyCode === 53) props.onPrecentButtonClick();
   };
 
   useEffect(() => {

@@ -9,27 +9,24 @@ const colorToCss = (color: IButtonProps["color"]) => {
       return css`
         background-color: #272b33;
         color: #ef7979;
-        &:hover,
-        &:focus {
-          background-color: #272b33;
+        &:hover {
+          background-color: #fcfcfc;
         }
       `;
     case ColorsEnum.GREEN:
       return css`
         background-color: #272b33;
         color: #26bba2;
-        &:hover,
-        &:focus {
-          background-color: #272b33;
+        &:hover {
+          background-color: #fcfcfc;
         }
       `;
     case ColorsEnum.WHITE:
       return css`
         background-color: #272b33;
         color: #fcfcfc;
-        &:hover,
-        &:focus {
-          background-color: #272b33;
+        &:hover {
+          background-color: #ef7979;
         }
       `;
   }
