@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { ColorsEnum } from "../ts/enums";
 // TS
+import { ColorsEnum } from "../ts/enums";
 import { IButtonProps } from "../ts/interfaces";
 
 const colorToCss = (color: IButtonProps["color"]) => {
@@ -43,10 +43,10 @@ const colorToCss = (color: IButtonProps["color"]) => {
 
 export const StyledButton = styled.button<IButtonProps>`
   font-family: inherit;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: 700;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 20%;
+  border-radius: 25%;
   padding-top: 1em;
   padding-bottom: 1em;
   transition: background-color 0.15s ease-in-out, opacity 0.15s ease-in-out;

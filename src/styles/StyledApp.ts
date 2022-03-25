@@ -6,7 +6,8 @@ const StyledApp = styled.div`
     "Segoe UI Symbol";
   font-size: 16px;
   width: 100%;
-  max-width: 320px;
+  max-width: 365px;
+  min-width: 290px;
 `;
 
 export default StyledApp;

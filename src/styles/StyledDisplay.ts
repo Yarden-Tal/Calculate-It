@@ -13,11 +13,12 @@ export const StyledIndicatorList = styled.div`
 
 export const StyledExpression = styled.span`
   margin-left: auto;
+  font-size: 2em;
 `;
 
 export const StyledScreen = styled.div`
   color: #fcfcfc;
-  font-size: 2.5em;
+  font-size: 3.4em;
   min-height: 1.4em;
   font-weight: 600;
   display: flex;

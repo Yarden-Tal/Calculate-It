@@ -3,6 +3,6 @@
   box-sizing: border-box;
 }
 
-html {
-  min-width: 320px;
+body {
+  max-width: 365px;
 }
