@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // Styles
 import StyledApp from "./styles/StyledApp";
 // Components
@@ -8,7 +8,7 @@ import Display from "./components/Display";
 import { OperatorEnum } from "./ts/enums";
 import { DigitType } from "./ts/types";
 // Helpers
-import { formatDisplay } from "./helpers/helpers";
+import { calcPrecent, formatDisplay } from "./helpers/helpers";
 import Alert from "./components/Alert";
 
 export const App = (): JSX.Element => {
@@ -18,11 +18,11 @@ export const App = (): JSX.Element => {
   const [display, setDisplay] = useState<string>("0");
   const [isAlertOpen, setIsAlertOpen] = useState<boolean>(false);
 
-  const calculate = (
+  const calc = (
     rightOperand: number,
     pendingOperator: OperatorEnum
   ): boolean => {
-    let newResult = result;
+    let newResult: number = result;
     switch (pendingOperator) {
       case OperatorEnum.ADD:
         newResult += rightOperand;
@@ -34,21 +34,25 @@ export const App = (): JSX.Element => {
         newResult *= rightOperand;
         break;
       case OperatorEnum.DIVIDE:
-        if (rightOperand === 0) {
-          setIsAlertOpen(true);
-          setDisplay("0");
-          setResult(0);
-          setPendingOperator(undefined);
-          setTimeout(() => {
-            setIsAlertOpen(false);
-          }, 4000);
-          return false;
-        }
+        handleZeroDivision(rightOperand);
         newResult /= rightOperand;
     }
     setResult(newResult);
     setDisplay(newResult.toString().toString().slice(0, 12));
     return true;
+  };
+
+  const handleZeroDivision = (rightOperand: number) => {
+    if (rightOperand === 0) {
+      setIsAlertOpen(true);
+      setDisplay("0");
+      setResult(0);
+      setPendingOperator(undefined);
+      setTimeout(() => {
+        setIsAlertOpen(false);
+      }, 4000);
+      return false;
+    }
   };
 
   const onDigitButtonClick = (digit: DigitType): void => {
@@ -64,12 +68,13 @@ export const App = (): JSX.Element => {
   };
 
   const onPrecentButtonClick = (): void => {
-    const perCent = String((result * Number(display)) / 100);
+    if (isWaitingForOperand) return;
+    const perCent = calcPrecent(result, display);
     setDisplay(perCent);
   };
 
   const onPointButtonClick = (): void => {
-    let newDisplay = display;
+    let newDisplay: string = display;
     if (isWaitingForOperand) newDisplay = "0";
     if (newDisplay.indexOf(".") === -1) newDisplay = `${newDisplay}.`;
     setDisplay(newDisplay);
@@ -79,7 +84,7 @@ export const App = (): JSX.Element => {
   const onOperatorButtonClick = (operator: OperatorEnum): void => {
     const operand = Number(display);
     if (typeof pendingOperator !== "undefined" && !isWaitingForOperand) {
-      if (!calculate(operand, pendingOperator)) return;
+      if (!calc(operand, pendingOperator)) return;
     } else setResult(operand);
     setPendingOperator(operator);
     setIsWaitingForOperand(true);
@@ -95,7 +100,7 @@ export const App = (): JSX.Element => {
   const onEqualButtonClick = (): void => {
     const operand = Number(display);
     if (typeof pendingOperator !== "undefined" && !isWaitingForOperand) {
-      if (!calculate(operand, pendingOperator)) return;
+      if (!calc(operand, pendingOperator)) return;
       setPendingOperator(undefined);
     } else setDisplay(operand.toString());
     setResult(operand);
