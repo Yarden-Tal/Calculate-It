@@ -4,16 +4,14 @@ export const StyledIndicatorList = styled.div`
   color: #fcfcfc;
   font-size: 0.75em;
   line-height: 1;
-  text-align: right;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.25em;
   min-height: 1em;
+  display: flex;
+  justify-content: flex-end;
 `;
 
-export const StyledExpression = styled.span`
-  margin-left: auto;
+export const StyledExpression = styled.div`
   font-size: 2em;
+  text-align: right;
 `;
 
 export const StyledScreen = styled.div`
@@ -22,14 +20,14 @@ export const StyledScreen = styled.div`
   min-height: 1.4em;
   font-weight: 600;
   display: flex;
-  align-items: center;
   justify-content: flex-end;
   overflow: hidden;
 `;
 
 const StyledDisplay = styled.div`
   background-color: #22252d;
-  padding: 5.5em 1em 1.5em 1em;
+  padding: 0.5em 1em;
+  border-radius: 20px;
 `;
 
 export default StyledDisplay;

@@ -1,7 +1,7 @@
-import React from "react";
+// Styles
 import StyledAlert from "../styles/StyledAlert";
 
-const Alert = () => {
+const Alert = (): JSX.Element => {
   return <StyledAlert>Cannot divide by zero</StyledAlert>;
 };
 
