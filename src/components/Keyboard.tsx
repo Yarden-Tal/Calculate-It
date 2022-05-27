@@ -4,12 +4,12 @@ import Button from "./Button";
 // Styles
 import StyledKeyboard from "../styles/StyledKeyboard";
 // TS
-import { IKeyboardProps } from "../ts/interfaces";
+import { KeyboardProps } from "../ts/interfaces";
 import { DigitType } from "../ts/types";
 import { ColorsEnum, OperatorEnum } from "../ts/enums";
 import { StyledKBContainer } from "../styles/StyledKBContainer";
 
-const Keyboard = (props: IKeyboardProps): JSX.Element => {
+const Keyboard = (props: KeyboardProps): JSX.Element => {
   const handleKeyDown = ({ keyCode, shiftKey }: KeyboardEvent): void => {
     if (keyCode >= 48 && keyCode <= 57 && !shiftKey)
       props.onDigitButtonClick((keyCode - 48) as DigitType);

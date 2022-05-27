@@ -12,11 +12,17 @@ import { calcPrecent, formatDisplay } from "./helpers/helpers";
 import Alert from "./components/Alert";
 
 export const App = (): JSX.Element => {
+  const [isDarkMode, setDarkMode] = useState<boolean>(true);
+
   const [result, setResult] = useState<number>(0);
   const [isWaitingForOperand, setIsWaitingForOperand] = useState<boolean>(true);
   const [pendingOperator, setPendingOperator] = useState<OperatorEnum>();
   const [display, setDisplay] = useState<string>("0");
   const [isAlertOpen, setIsAlertOpen] = useState<boolean>(false);
+
+  const handleToggle = () => {
+    setDarkMode(!isDarkMode);
+  };
 
   const calc = (
     rightOperand: number,
@@ -122,6 +128,7 @@ export const App = (): JSX.Element => {
   return (
     <StyledApp>
       <Display
+        handleToggle={handleToggle}
         value={formatDisplay(display)}
         expression={
           typeof pendingOperator !== "undefined"

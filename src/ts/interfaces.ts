@@ -1,9 +1,14 @@
 // TS
-import React, { ReactNode } from "react";
-import { ColorsEnum, OperatorEnum } from "./enums";
+import { ReactNode } from "react";
+import {
+  ColorsEnum,
+  DarkThemeEnum,
+  LightThemeEnum,
+  OperatorEnum,
+} from "./enums";
 import { DigitType } from "./types";
 
-export interface IKeyboardProps {
+export interface KeyboardProps {
   onDigitButtonClick: (digit: DigitType) => void;
   onPointButtonClick: () => void;
   onOperatorButtonClick: (operator: OperatorEnum) => void;
@@ -13,14 +18,36 @@ export interface IKeyboardProps {
   onPrecentButtonClick: () => void;
 }
 
-export interface IDisplayProps {
+export interface DisplayProps {
   expression: string;
   value: string;
+  handleToggle: () => void;
 }
 
-export interface IButtonProps {
+export interface ButtonProps {
   color?: ColorsEnum;
   isLarge?: boolean;
   onClick?: () => void;
   children?: ReactNode;
+}
+
+export interface ColorTheme {
+  fontColor: DarkThemeEnum | LightThemeEnum;
+  displayBackgroundColor: DarkThemeEnum | LightThemeEnum;
+  keyboardBackgroundColor: DarkThemeEnum | LightThemeEnum;
+  buttonBackgroundColor: DarkThemeEnum | LightThemeEnum;
+}
+
+export interface ColorThemes {
+  darkMode: ColorTheme;
+  lightMode: ColorTheme;
+}
+
+export interface ColorThemeContextProps {
+  isDarkMode: boolean;
+  handleToggle: () => void;
+}
+
+export interface StyledTPPRops {
+  isDark: boolean;
 }

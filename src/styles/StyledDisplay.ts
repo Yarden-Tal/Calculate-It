@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { DarkThemeEnum } from "../ts/enums";
 
 export const StyledIndicatorList = styled.div`
-  color: #fcfcfc;
+  color: ${DarkThemeEnum.FONT_DARK_COLOR};
   font-size: 0.75em;
   line-height: 1;
   min-height: 1em;
@@ -15,7 +16,7 @@ export const StyledExpression = styled.div`
 `;
 
 export const StyledScreen = styled.div`
-  color: #fcfcfc;
+  color: ${DarkThemeEnum.FONT_DARK_COLOR};
   font-size: 3.4em;
   min-height: 1.4em;
   font-weight: 600;
@@ -25,7 +26,7 @@ export const StyledScreen = styled.div`
 `;
 
 const StyledDisplay = styled.div`
-  background-color: #22252d;
+  background-color: ${DarkThemeEnum.DISPLAY_DARK_COLOR};
   padding: 0.5em 1em;
   border-radius: 20px;
 `;

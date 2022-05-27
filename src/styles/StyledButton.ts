@@ -1,47 +1,47 @@
 import styled, { css } from "styled-components";
 // TS
-import { ColorsEnum } from "../ts/enums";
-import { IButtonProps } from "../ts/interfaces";
+import { ColorsEnum, DarkThemeEnum } from "../ts/enums";
+import { ButtonProps } from "../ts/interfaces";
 
-const colorToCss = (color: IButtonProps["color"]) => {
+const colorToCss = (color: ButtonProps["color"]) => {
   switch (color) {
     case ColorsEnum.RED:
       return css`
-        background-color: #272b33;
-        color: #ef7979;
+        background-color: ${DarkThemeEnum.BUTTON_DARK_COLOR};
+        color: ${ColorsEnum.CHOSEN_RED};
         &:hover {
-          background-color: #fcfcfc;
+          background-color: ${DarkThemeEnum.BUTTON_HOVER_DARK_COLOR};
         }
       `;
     case ColorsEnum.GREEN:
       return css`
-        background-color: #272b33;
-        color: #26bba2;
+        background-color: ${DarkThemeEnum.BUTTON_DARK_COLOR};
+        color: ${ColorsEnum.CHOSEN_GREEN};
         &:hover {
-          background-color: #fcfcfc;
+          background-color: ${DarkThemeEnum.BUTTON_HOVER_DARK_COLOR};
         }
       `;
     case ColorsEnum.WHITE:
       return css`
-        background-color: #272b33;
-        color: #fcfcfc;
+        background-color: ${DarkThemeEnum.BUTTON_DARK_COLOR};
+        color: ${ColorsEnum.CHOSEN_WHITE};
         &:hover {
-          background-color: #ef7979;
+          background-color: ${DarkThemeEnum.BUTTON_HOVER_DARK_COLOR};
         }
       `;
   }
 
   return css`
-    background-color: #272b33;
+    background-color: ${DarkThemeEnum.BUTTON_DARK_COLOR};
     color: #fff;
     &:hover,
     &:focus {
-      background-color: #272b33;
+      background-color: ${DarkThemeEnum.BUTTON_DARK_COLOR};
     }
   `;
 };
 
-export const StyledButton = styled.button<IButtonProps>`
+export const StyledButton = styled.button<ButtonProps>`
   font-family: inherit;
   font-size: 1.4rem;
   font-weight: 700;

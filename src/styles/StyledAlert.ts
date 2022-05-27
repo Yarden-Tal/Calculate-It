@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ColorsEnum } from "../ts/enums";
 
 const StyledAlert = styled.div`
   @keyframes fade {
@@ -10,8 +11,8 @@ const StyledAlert = styled.div`
       opacity: 1;
     }
   }
-  background-color: #cc4140;
-  color: #fff;
+  background-color: ${ColorsEnum.CHOSEN_RED};
+  color: ${ColorsEnum.CHOSEN_WHITE};
   text-align: center;
   font-weight: 500;
   position: absolute;

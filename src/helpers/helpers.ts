@@ -1,9 +1,11 @@
-export const formatDisplay = (display: string) => {
-  const output = Number(display).toLocaleString().replace("∞", "Invalid");
+export const formatDisplay = (display: string): string => {
+  const output: string = Number(display)
+    .toLocaleString()
+    .replace("∞", "Invalid");
   return output;
 };
 
-export const calcPrecent = (result: number, display: string) => {
-  const perCent = String((result * Number(display)) / 100);
+export const calcPrecent = (result: number, display: string): string => {
+  const perCent: string = String((result * Number(display)) / 100);
   return perCent;
 };
