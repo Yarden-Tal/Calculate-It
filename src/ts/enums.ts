@@ -25,8 +25,8 @@ export enum DarkThemeEnum {
 }
 
 export enum LightThemeEnum {
-  FONT_LIGHT_COLOR = "",
-  DISPLAY_LIGHT_COLOR = "",
-  KEYBOARD_LIGHT_COLOR = "",
-  BUTTON_LIGHT_COLOR = "",
+  FONT_LIGHT_COLOR = "black",
+  DISPLAY_LIGHT_COLOR = "white",
+  KEYBOARD_LIGHT_COLOR = "#F9F9F9",
+  BUTTON_LIGHT_COLOR = "#F7F7F7",
 }

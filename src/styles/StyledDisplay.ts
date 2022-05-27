@@ -1,8 +1,10 @@
 import styled from "styled-components";
-import { DarkThemeEnum } from "../ts/enums";
+import { themes } from "../context/themes";
+import { StyledProp } from "../ts/interfaces";
 
-export const StyledIndicatorList = styled.div`
-  color: ${DarkThemeEnum.FONT_DARK_COLOR};
+export const StyledIndicatorList = styled.div<StyledProp>`
+  color: ${props =>
+    props.isDark ? themes.darkMode.fontColor : themes.lightMode.fontColor};
   font-size: 0.75em;
   line-height: 1;
   min-height: 1em;
@@ -15,8 +17,9 @@ export const StyledExpression = styled.div`
   text-align: right;
 `;
 
-export const StyledScreen = styled.div`
-  color: ${DarkThemeEnum.FONT_DARK_COLOR};
+export const StyledScreen = styled.div<StyledProp>`
+  color: ${props =>
+    props.isDark ? themes.darkMode.fontColor : themes.lightMode.fontColor};
   font-size: 3.4em;
   min-height: 1.4em;
   font-weight: 600;
@@ -25,8 +28,11 @@ export const StyledScreen = styled.div`
   overflow: hidden;
 `;
 
-const StyledDisplay = styled.div`
-  background-color: ${DarkThemeEnum.DISPLAY_DARK_COLOR};
+const StyledDisplay = styled.div<StyledProp>`
+  background-color: ${props =>
+    props.isDark
+      ? themes.darkMode.displayBackgroundColor
+      : themes.lightMode.displayBackgroundColor};
   padding: 0.5em 1em;
   border-radius: 20px;
 `;

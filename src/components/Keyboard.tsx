@@ -1,15 +1,18 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 // Components
 import Button from "./Button";
 // Styles
 import StyledKeyboard from "../styles/StyledKeyboard";
 // TS
-import { KeyboardProps } from "../ts/interfaces";
+import { ColorThemeContextProps, KeyboardProps } from "../ts/interfaces";
 import { DigitType } from "../ts/types";
 import { ColorsEnum, OperatorEnum } from "../ts/enums";
 import { StyledKBContainer } from "../styles/StyledKBContainer";
+import { ColorThemeContext } from "../context/ColorThemeContext";
 
 const Keyboard = (props: KeyboardProps): JSX.Element => {
+  const { isDarkMode } = useContext<ColorThemeContextProps>(ColorThemeContext);
+
   const handleKeyDown = ({ keyCode, shiftKey }: KeyboardEvent): void => {
     if (keyCode >= 48 && keyCode <= 57 && !shiftKey)
       props.onDigitButtonClick((keyCode - 48) as DigitType);
@@ -37,8 +40,8 @@ const Keyboard = (props: KeyboardProps): JSX.Element => {
   });
 
   return (
-    <StyledKBContainer>
-      <StyledKeyboard>
+    <StyledKBContainer isDark={isDarkMode}>
+      <StyledKeyboard isDark={isDarkMode}>
         <Button color={ColorsEnum.GREEN} onClick={props.onAllClearButtonClick}>
           AC
         </Button>

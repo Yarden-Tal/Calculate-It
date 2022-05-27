@@ -1,13 +1,19 @@
 import styled, { css } from "styled-components";
+import { themes } from "../context/themes";
 // TS
 import { ColorsEnum, DarkThemeEnum } from "../ts/enums";
 import { ButtonProps } from "../ts/interfaces";
 
-const colorToCss = (color: ButtonProps["color"]) => {
+const colorToCss = (
+  isDarkMode: ButtonProps["isDark"],
+  color: ButtonProps["color"]
+) => {
   switch (color) {
     case ColorsEnum.RED:
       return css`
-        background-color: ${DarkThemeEnum.BUTTON_DARK_COLOR};
+        background-color: ${isDarkMode
+          ? themes.darkMode.buttonBackgroundColor
+          : themes.lightMode.buttonBackgroundColor};
         color: ${ColorsEnum.CHOSEN_RED};
         &:hover {
           background-color: ${DarkThemeEnum.BUTTON_HOVER_DARK_COLOR};
@@ -15,7 +21,9 @@ const colorToCss = (color: ButtonProps["color"]) => {
       `;
     case ColorsEnum.GREEN:
       return css`
-        background-color: ${DarkThemeEnum.BUTTON_DARK_COLOR};
+        background-color: ${isDarkMode
+          ? themes.darkMode.buttonBackgroundColor
+          : themes.lightMode.buttonBackgroundColor};
         color: ${ColorsEnum.CHOSEN_GREEN};
         &:hover {
           background-color: ${DarkThemeEnum.BUTTON_HOVER_DARK_COLOR};
@@ -23,17 +31,26 @@ const colorToCss = (color: ButtonProps["color"]) => {
       `;
     case ColorsEnum.WHITE:
       return css`
-        background-color: ${DarkThemeEnum.BUTTON_DARK_COLOR};
-        color: ${ColorsEnum.CHOSEN_WHITE};
+        background-color: ${isDarkMode
+          ? themes.darkMode.buttonBackgroundColor
+          : themes.lightMode.buttonBackgroundColor};
+        color: ${isDarkMode
+          ? themes.darkMode.fontColor
+          : themes.lightMode.fontColor};
         &:hover {
           background-color: ${DarkThemeEnum.BUTTON_HOVER_DARK_COLOR};
+          color: ${themes.lightMode.fontColor};
         }
       `;
   }
 
   return css`
-    background-color: ${DarkThemeEnum.BUTTON_DARK_COLOR};
-    color: #fff;
+    background-color: ${props =>
+      props
+        ? themes.darkMode.displayBackgroundColor
+        : themes.lightMode.displayBackgroundColor};
+    color: ${props =>
+      props ? themes.darkMode.fontColor : themes.lightMode.fontColor};
     &:hover,
     &:focus {
       background-color: ${DarkThemeEnum.BUTTON_DARK_COLOR};
@@ -49,8 +66,8 @@ export const StyledButton = styled.button<ButtonProps>`
   border-radius: 25%;
   padding-top: 1em;
   padding-bottom: 1em;
-  transition: background-color 0.15s ease-in-out, opacity 0.15s ease-in-out;
-  ${({ color }) => colorToCss(color)}
+  /* transition: background-color 0.3s ease-in-out, opacity 0.15s ease-in-out; */
+  ${({ isDark, color }) => colorToCss(isDark, color)}
   ${({ isLarge }) =>
     isLarge &&
     css`

@@ -25,7 +25,8 @@ export interface DisplayProps {
 }
 
 export interface ButtonProps {
-  color?: ColorsEnum;
+  isDark?: boolean;
+  color: ColorsEnum;
   isLarge?: boolean;
   onClick?: () => void;
   children?: ReactNode;
@@ -48,6 +49,6 @@ export interface ColorThemeContextProps {
   handleToggle: () => void;
 }
 
-export interface StyledTPPRops {
+export interface StyledProp {
   isDark: boolean;
 }

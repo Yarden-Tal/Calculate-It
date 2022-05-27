@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { themes } from "../context/themes";
-import { StyledTPPRops } from "../ts/interfaces";
+import { StyledProp } from "../ts/interfaces";
 
-const StyledColorThemePicker = styled.button<StyledTPPRops>`
+const StyledColorThemePicker = styled.button<StyledProp>`
   margin: 0 auto;
   padding: 1em 1.7em;
   border-radius: 18px;

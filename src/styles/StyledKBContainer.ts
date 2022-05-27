@@ -1,9 +1,13 @@
 // Style
 import styled from "styled-components";
+import { themes } from "../context/themes";
+import { StyledProp } from "../ts/interfaces";
 // TS
-import { DarkThemeEnum } from "../ts/enums";
 
-export const StyledKBContainer = styled.div`
-  background-color: ${DarkThemeEnum.DISPLAY_DARK_COLOR};
+export const StyledKBContainer = styled.div<StyledProp>`
+  background-color: ${props =>
+    props.isDark
+      ? themes.darkMode.displayBackgroundColor
+      : themes.lightMode.displayBackgroundColor};
   height: 50px;
 `;
