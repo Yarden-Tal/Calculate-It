@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { themes } from "../context/themes";
+import { ColorsEnum } from "../ts/enums";
 import { StyledProp } from "../ts/interfaces";
 
 const StyledColorThemePicker = styled.button<StyledProp>`
@@ -12,10 +13,12 @@ const StyledColorThemePicker = styled.button<StyledProp>`
       ? themes.darkMode.buttonBackgroundColor
       : themes.lightMode.buttonBackgroundColor};
   display: flex;
+  transition: background-color 0.25s ease-in-out, opacity 0.25s ease-in-out;
   flex-direction: row;
   gap: 32px;
   &:hover {
     cursor: pointer;
+    background-color: ${ColorsEnum.CHOSEN_GREEN};
   }
 `;
 

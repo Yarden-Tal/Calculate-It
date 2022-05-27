@@ -1,5 +1,5 @@
-import * as React from "react";
-import { useState, createContext, ReactNode } from "react";
+import { ReactJSXElementChildrenAttribute } from "@emotion/react/types/jsx-namespace";
+import { useState, createContext } from "react";
 import { ColorThemeContextProps } from "../ts/interfaces";
 // Services
 // TS
@@ -14,15 +14,9 @@ export const ColorThemeContext =
 
 export const ColorThemeContextProvider = ({
   children,
-}: {
-  children: ReactNode;
-}) => {
+}: ReactJSXElementChildrenAttribute) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
-  const handleToggle = (): void => {
-    setIsDarkMode(!isDarkMode);
-  };
-  console.log(isDarkMode);
-
+  const handleToggle = (): void => setIsDarkMode(!isDarkMode);
   return (
     <ColorThemeContext.Provider value={{ handleToggle, isDarkMode }}>
       {children}

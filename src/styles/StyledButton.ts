@@ -62,11 +62,11 @@ export const StyledButton = styled.button<ButtonProps>`
   font-family: inherit;
   font-size: 1.4rem;
   font-weight: 700;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
   border-radius: 25%;
   padding-top: 1em;
   padding-bottom: 1em;
-  /* transition: background-color 0.3s ease-in-out, opacity 0.15s ease-in-out; */
+  /* transition: background-color 0.15s ease-in-out, opacity 0.15s ease-in-out; */
   ${({ isDark, color }) => colorToCss(isDark, color)}
   ${({ isLarge }) =>
     isLarge &&
