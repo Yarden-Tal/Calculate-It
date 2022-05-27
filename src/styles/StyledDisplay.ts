@@ -21,7 +21,6 @@ export const StyledScreen = styled.div<StyledProp>`
   color: ${props =>
     props.isDark ? themes.darkMode.fontColor : themes.lightMode.fontColor};
   font-size: 3.4em;
-  min-height: 1.4em;
   font-weight: 600;
   display: flex;
   justify-content: flex-end;
@@ -35,6 +34,7 @@ const StyledDisplay = styled.div<StyledProp>`
       : themes.lightMode.displayBackgroundColor};
   padding: 0.5em 1em;
   border-radius: 20px;
+  height: 40%;
 `;
 
 export default StyledDisplay;

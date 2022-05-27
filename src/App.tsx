@@ -126,7 +126,7 @@ export const App = (): JSX.Element => {
   };
 
   return (
-    <StyledApp>
+    <StyledApp isDark={isDarkMode}>
       <Display
         handleToggle={handleToggle}
         value={formatDisplay(display)}

@@ -25,7 +25,7 @@ const ColorThemePicker = () => {
         xmlns="http://www.w3.org/2000/svg"
         width="18"
         height="18"
-        fill={isDarkMode ? "white" : "grey"}
+        fill={isDarkMode ? "white" : "#dbd9d9"}
         className="bi bi-moon"
         viewBox="0 0 16 16"
       >

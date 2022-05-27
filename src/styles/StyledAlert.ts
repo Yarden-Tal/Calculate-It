@@ -16,11 +16,13 @@ const StyledAlert = styled.div`
   text-align: center;
   font-weight: 500;
   position: absolute;
-  left: 55px;
+  top: 36%;
+  right: 50%;
+  transform: translate(50%, -50%);
   padding: 3px 20px;
   z-index: 1;
   opacity: 1;
-  animation: fade 4s;
+  animation: fade 5s linear;
 `;
 
 export default StyledAlert;

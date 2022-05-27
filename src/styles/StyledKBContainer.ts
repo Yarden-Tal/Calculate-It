@@ -9,5 +9,5 @@ export const StyledKBContainer = styled.div<StyledProp>`
     props.isDark
       ? themes.darkMode.displayBackgroundColor
       : themes.lightMode.displayBackgroundColor};
-  height: 50px;
+  height: 60%;
 `;

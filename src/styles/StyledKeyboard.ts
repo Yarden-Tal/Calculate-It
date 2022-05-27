@@ -15,6 +15,7 @@ const StyledKeyboard = styled.div<StyledProp>`
       : themes.lightMode.keyboardBackgroundColor};
   padding: 1.5rem;
   border-radius: 5%;
+  height: 100%;
 `;
 
 export default StyledKeyboard;
