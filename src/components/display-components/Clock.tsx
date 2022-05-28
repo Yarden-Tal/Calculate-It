@@ -16,7 +16,15 @@ const Clock = (): JSX.Element => {
       clearInterval(timerId);
     };
   }, []);
-  return <StyledClock isDark={isDarkMode}>{formattedTime}</StyledClock>;
+  return (
+    <StyledClock
+      target="_blank"
+      href="https://date-fns.org/"
+      isDark={isDarkMode}
+    >
+      {formattedTime}
+    </StyledClock>
+  );
 };
 
 export default Clock;
