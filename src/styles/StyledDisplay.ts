@@ -22,6 +22,7 @@ export const StyledScreen = styled.div<StyledProp>`
     props.isDark ? themes.darkMode.fontColor : themes.lightMode.fontColor};
   font-size: 3.4em;
   font-weight: 600;
+  height: 100%;
   display: flex;
   justify-content: flex-end;
   overflow: hidden;
