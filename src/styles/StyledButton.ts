@@ -49,19 +49,6 @@ const colorToCss = (
         }
       `;
   }
-
-  return css`
-    background-color: ${props =>
-      props
-        ? themes.darkMode.displayBackgroundColor
-        : themes.lightMode.displayBackgroundColor};
-    color: ${props =>
-      props ? themes.darkMode.fontColor : themes.lightMode.fontColor};
-    &:hover,
-    &:focus {
-      background-color: ${DarkThemeEnum.BUTTON_DARK_COLOR};
-    }
-  `;
 };
 
 export const StyledButton = styled.button<ButtonProps>`
