@@ -16,7 +16,7 @@ const DisplayTopBar = (): JSX.Element => {
       <div style={{ color: "grey" }}>
         by&nbsp;
         <a
-          style={{ color: "#26bba2b3", textDecoration: "none" }}
+          style={{ color: "#26bba2", textDecoration: "none" }}
           href="https://www.linkedin.com/in/yarden-tal-245095112"
           target={"_blank"}
         >
