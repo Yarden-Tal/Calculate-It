@@ -8,6 +8,7 @@ const colorToCss = (
   isDarkMode: ButtonProps["isDark"],
   color: ButtonProps["color"]
 ) => {
+  const btnHoverLight = "rgb(219, 217, 217)";
   switch (color) {
     case ColorsEnum.RED:
       return css`
@@ -18,7 +19,7 @@ const colorToCss = (
         &:hover {
           background-color: ${isDarkMode
             ? DarkThemeEnum.BUTTON_HOVER_DARK_COLOR
-            : "rgb(219, 217, 217)"};
+            : btnHoverLight};
         }
       `;
     case ColorsEnum.GREEN:
@@ -30,7 +31,7 @@ const colorToCss = (
         &:hover {
           background-color: ${isDarkMode
             ? DarkThemeEnum.BUTTON_HOVER_DARK_COLOR
-            : "rgb(219, 217, 217)"};
+            : btnHoverLight};
         }
       `;
     case ColorsEnum.WHITE:
@@ -44,7 +45,7 @@ const colorToCss = (
         &:hover {
           background-color: ${isDarkMode
             ? DarkThemeEnum.BUTTON_HOVER_DARK_COLOR
-            : "rgb(219, 217, 217)"};
+            : btnHoverLight};
           color: ${themes.lightMode.fontColor};
         }
       `;
@@ -59,7 +60,6 @@ export const StyledButton = styled.button<ButtonProps>`
   border-radius: 25%;
   padding-top: 1em;
   padding-bottom: 1em;
-  /* transition: background-color 0.15s ease-in-out, opacity 0.15s ease-in-out; */
   ${({ isDark, color }) => colorToCss(isDark, color)}
   ${({ isLarge }) =>
     isLarge &&
