@@ -13,16 +13,13 @@ import Alert from "./components/Alert";
 
 export const App = (): JSX.Element => {
   const [isDarkMode, setDarkMode] = useState<boolean>(true);
-
   const [result, setResult] = useState<number>(0);
   const [isWaitingForOperand, setIsWaitingForOperand] = useState<boolean>(true);
   const [pendingOperator, setPendingOperator] = useState<OperatorEnum>();
   const [display, setDisplay] = useState<string>("0");
   const [isAlertOpen, setIsAlertOpen] = useState<boolean>(false);
 
-  const handleToggle = () => {
-    setDarkMode(!isDarkMode);
-  };
+  const handleToggle = (): void => setDarkMode(!isDarkMode);
 
   const calc = (
     rightOperand: number,
@@ -48,7 +45,7 @@ export const App = (): JSX.Element => {
     return true;
   };
 
-  const handleZeroDivision = (rightOperand: number) => {
+  const handleZeroDivision = (rightOperand: number): false | undefined => {
     if (rightOperand === 0) {
       setIsAlertOpen(true);
       setDisplay("0");
@@ -62,7 +59,7 @@ export const App = (): JSX.Element => {
   };
 
   const onDigitButtonClick = (digit: DigitType): void => {
-    let newDisplay = display;
+    let newDisplay: string = display;
     if ((display === "0" && digit === 0) || display.length > 12) return;
     if (isWaitingForOperand) {
       newDisplay = "";
@@ -75,7 +72,7 @@ export const App = (): JSX.Element => {
 
   const onPrecentButtonClick = (): void => {
     if (isWaitingForOperand) return;
-    const perCent = calcPrecent(result, display);
+    const perCent: string = calcPrecent(result, display);
     setDisplay(perCent);
   };
 

@@ -135,7 +135,7 @@ const Keyboard = (props: KeyboardProps): JSX.Element => {
           +
         </Button>
         <Button color={ColorsEnum.WHITE} onClick={props.onAllClearButtonClick}>
-          <div style={{ transform: "rotate(270deg)", fontSize: 24 }}>⭯</div>
+          <div style={{ transform: "rotate(300deg)", fontSize: 24 }}>↺</div>
         </Button>
         <Button
           color={ColorsEnum.WHITE}

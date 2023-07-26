@@ -19,6 +19,7 @@ const DisplayTopBar = (): JSX.Element => {
           style={{ color: "#26bba2", textDecoration: "none" }}
           href="https://www.linkedin.com/in/yarden-tal-245095112"
           target={"_blank"}
+          rel="noreferrer"
         >
           Yarden Tal
         </a>
