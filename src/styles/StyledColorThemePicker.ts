@@ -4,7 +4,7 @@ import { ColorsEnum } from "../ts/enums";
 import { StyledProp } from "../ts/interfaces";
 
 const StyledColorThemePicker = styled.button<StyledProp>`
-  margin: 1em auto 6em auto;
+  margin: 1em auto 2em auto;
   padding: 1em 1.7em;
   border-radius: 18px;
   border: none;

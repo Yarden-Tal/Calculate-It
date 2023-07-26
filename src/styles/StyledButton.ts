@@ -16,7 +16,7 @@ const colorToCss = (
           ? themes.darkMode.buttonBackgroundColor
           : themes.lightMode.buttonBackgroundColor};
         color: ${ColorsEnum.CHOSEN_RED};
-        &:hover {
+        &:active {
           background-color: ${isDarkMode
             ? DarkThemeEnum.BUTTON_HOVER_DARK_COLOR
             : btnHoverLight};
@@ -28,7 +28,7 @@ const colorToCss = (
           ? themes.darkMode.buttonBackgroundColor
           : themes.lightMode.buttonBackgroundColor};
         color: ${ColorsEnum.CHOSEN_GREEN};
-        &:hover {
+        &:active {
           background-color: ${isDarkMode
             ? DarkThemeEnum.BUTTON_HOVER_DARK_COLOR
             : btnHoverLight};
@@ -42,7 +42,7 @@ const colorToCss = (
         color: ${isDarkMode
           ? themes.darkMode.fontColor
           : themes.lightMode.fontColor};
-        &:hover {
+        &:active {
           background-color: ${isDarkMode
             ? DarkThemeEnum.BUTTON_HOVER_DARK_COLOR
             : btnHoverLight};
@@ -55,6 +55,7 @@ const colorToCss = (
 export const StyledButton = styled.button<ButtonProps>`
   font-family: inherit;
   font-size: 1.4rem;
+  margin: 0 auto;
   font-weight: 700;
   border: 1px solid transparent;
   border-radius: 25%;
