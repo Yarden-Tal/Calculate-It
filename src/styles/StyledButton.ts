@@ -16,11 +16,6 @@ const colorToCss = (
           ? themes.darkMode.buttonBackgroundColor
           : themes.lightMode.buttonBackgroundColor};
         color: ${ColorsEnum.CHOSEN_RED};
-        &:active {
-          background-color: ${isDarkMode
-            ? DarkThemeEnum.BUTTON_HOVER_DARK_COLOR
-            : btnHoverLight};
-        }
       `;
     case ColorsEnum.GREEN:
       return css`
@@ -28,11 +23,6 @@ const colorToCss = (
           ? themes.darkMode.buttonBackgroundColor
           : themes.lightMode.buttonBackgroundColor};
         color: ${ColorsEnum.CHOSEN_GREEN};
-        &:active {
-          background-color: ${isDarkMode
-            ? DarkThemeEnum.BUTTON_HOVER_DARK_COLOR
-            : btnHoverLight};
-        }
       `;
     case ColorsEnum.WHITE:
       return css`
@@ -42,12 +32,7 @@ const colorToCss = (
         color: ${isDarkMode
           ? themes.darkMode.fontColor
           : themes.lightMode.fontColor};
-        &:active {
-          background-color: ${isDarkMode
-            ? DarkThemeEnum.BUTTON_HOVER_DARK_COLOR
-            : btnHoverLight};
-          color: ${themes.lightMode.fontColor};
-        }
+        ${themes.lightMode.fontColor};
       `;
   }
 };
